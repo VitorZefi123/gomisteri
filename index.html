@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gomisteri Fatriu - Gomisteri Rrugore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red: #e63946;
+      --dark: #0d0d0d;
+      --dark2: #1a1a1a;
+      --dark3: #222;
+      --gray: #888;
+      --light: #f1f1f1;
+      --white: #fff;
+      --accent: #ff6b35;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(230,57,70,0.2);
+      transition: all .3s;
+    }
+    .logo {
+      font-size: 1.7rem; font-weight: 900; letter-spacing: 1px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--light); text-decoration: none; font-size: .9rem;
+      font-weight: 500; letter-spacing: .5px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta {
+      background: var(--red); color: var(--white) !important;
+      padding: 10px 22px; border-radius: 6px;
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: #c9232f !important; transform: scale(1.05); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      position: relative; overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(230,57,70,0.15) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 70%, rgba(255,107,53,0.08) 0%, transparent 60%),
+                  #0d0d0d;
+    }
+    .tire-ring {
+      position: absolute; border-radius: 50%;
+      border: 2px solid rgba(230,57,70,0.12);
+      animation: pulse-ring 4s ease-in-out infinite;
+    }
+    .tire-ring:nth-child(1) { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0s; }
+    .tire-ring:nth-child(2) { width: 800px; height: 800px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: .8s; }
+    .tire-ring:nth-child(3) { width: 1050px; height: 1050px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 1.6s; }
+    @keyframes pulse-ring {
+      0%,100% { opacity: .3; transform: translate(-50%,-50%) scale(1); }
+      50% { opacity: .7; transform: translate(-50%,-50%) scale(1.03); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 820px; padding: 0 20px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(230,57,70,0.15); border: 1px solid rgba(230,57,70,0.4);
+      padding: 6px 18px; border-radius: 50px; font-size: .8rem;
+      color: #ff8a93; margin-bottom: 28px; letter-spacing: 1px; text-transform: uppercase;
+      animation: fadeUp .8s ease both;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05;
+      animation: fadeUp .9s ease .1s both;
+    }
+    .hero h1 .highlight {
+      color: var(--red);
+      text-shadow: 0 0 60px rgba(230,57,70,0.5);
+    }
+    .hero p {
+      font-size: 1.15rem; color: #aaa; max-width: 560px; margin: 22px auto 40px;
+      line-height: 1.7; animation: fadeUp 1s ease .2s both;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 1s ease .3s both;
+    }
+    .btn-primary {
+      background: var(--red); color: var(--white);
+      padding: 16px 38px; border-radius: 8px; font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all .25s; box-shadow: 0 8px 30px rgba(230,57,70,0.4);
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary:hover { background: #c9232f; transform: translateY(-3px); box-shadow: 0 14px 40px rgba(230,57,70,0.5); }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      padding: 16px 38px; border-radius: 8px; font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.2); cursor: pointer;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-secondary:hover { border-color: var(--red); color: var(--red); transform: translateY(-3px); }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 60px; margin-top: 70px;
+      animation: fadeUp 1s ease .5s both;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--red); }
+    .stat-label { font-size: .78rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 100px 60px; }
+    .section-label {
+      display: inline-block; font-size: .75rem; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--red); font-weight: 600; margin-bottom: 14px;
+    }
+    .section-title { font-size: clamp(2rem,4vw,3rem); font-weight: 800; line-height: 1.15; }
+    .section-title span { color: var(--red); }
+    .section-sub { color: var(--gray); margin-top: 14px; font-size: 1rem; line-height: 1.7; max-width: 520px; }
+
+    /* ─── SERVICES ─── */
+    #sherbime { background: var(--dark2); }
+    .services-header { text-align: center; margin-bottom: 60px; }
+    .services-header .section-sub { margin: 14px auto 0; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--dark3); border-radius: 16px; padding: 36px 28px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all .3s; position: relative; overflow: hidden; cursor: default;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(230,57,70,0.08), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .service-card:hover { transform: translateY(-8px); border-color: rgba(230,57,70,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 60px; height: 60px; background: rgba(230,57,70,0.12);
+      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--red); margin-bottom: 22px;
+      transition: all .3s;
+    }
+    .service-card:hover .service-icon { background: var(--red); color: var(--white); }
+    .service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: .88rem; color: var(--gray); line-height: 1.65; }
+
+    /* ─── WHY US ─── */
+    #pse-ne { background: var(--dark); }
+    .why-wrapper {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .why-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .tire-svg {
+      width: 380px; height: 380px; animation: spin-slow 20s linear infinite;
+    }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .tire-center-badge {
+      position: absolute; width: 140px; height: 140px;
+      background: linear-gradient(135deg, var(--red), var(--accent));
+      border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      box-shadow: 0 0 60px rgba(230,57,70,0.5);
+    }
+    .tire-center-badge .big { font-size: 2rem; font-weight: 900; }
+    .tire-center-badge .small { font-size: .7rem; letter-spacing: 1px; opacity: .85; }
+    .why-list { display: flex; flex-direction: column; gap: 22px; margin-top: 40px; }
+    .why-item {
+      display: flex; gap: 18px; align-items: flex-start;
+      background: var(--dark2); padding: 22px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05); transition: border-color .3s;
+    }
+    .why-item:hover { border-color: rgba(230,57,70,0.3); }
+    .why-icon { font-size: 1.4rem; color: var(--red); margin-top: 2px; flex-shrink: 0; }
+    .why-item h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+    .why-item p { font-size: .83rem; color: var(--gray); line-height: 1.55; }
+
+    /* ─── BRANDS ─── */
+    #brendet { background: var(--dark2); text-align: center; }
+    .brands-title { font-size: 1rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+    .brands-row {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 16px; max-width: 1000px; margin: 0 auto;
+    }
+    .brand-pill {
+      padding: 14px 28px; border-radius: 50px;
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.08);
+      font-size: .9rem; font-weight: 600; color: #ccc; letter-spacing: 1px;
+      transition: all .25s;
+    }
+    .brand-pill:hover { border-color: var(--red); color: var(--white); transform: scale(1.05); }
+
+    /* ─── CONTACT ─── */
+    #kontakt { background: var(--dark); }
+    .contact-wrapper {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start;
+    }
+    .contact-info { padding-top: 10px; }
+    .contact-info .section-sub { max-width: 100%; }
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
+    .contact-card {
+      display: flex; align-items: center; gap: 18px;
+      background: var(--dark2); border-radius: 14px; padding: 22px 24px;
+      border: 1px solid rgba(255,255,255,0.06); text-decoration: none;
+      transition: all .3s;
+    }
+    .contact-card:hover { border-color: rgba(230,57,70,0.5); transform: translateX(6px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .contact-card-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(230,57,70,0.12); display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--red); flex-shrink: 0; transition: all .3s;
+    }
+    .contact-card:hover .contact-card-icon { background: var(--red); color: var(--white); }
+    .contact-card-text .label { font-size: .75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+    .contact-card-text .value { font-size: 1.05rem; font-weight: 600; color: var(--white); margin-top: 2px; }
+    .hours-card {
+      background: linear-gradient(135deg, rgba(230,57,70,0.12), rgba(255,107,53,0.08));
+      border: 1px solid rgba(230,57,70,0.25); border-radius: 14px; padding: 28px;
+      margin-top: 16px;
+    }
+    .hours-card h4 { font-size: .85rem; color: var(--red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .hours-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: .9rem; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--gray); }
+    .hours-row .time { font-weight: 600; }
+    .hours-row .time.closed { color: var(--red); }
+
+    /* ─── CONTACT FORM ─── */
+    .contact-form-box {
+      background: var(--dark2); border-radius: 20px; padding: 44px 40px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .contact-form-box h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .contact-form-box p { font-size: .88rem; color: var(--gray); margin-bottom: 30px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    .form-group label { font-size: .8rem; color: #aaa; font-weight: 500; letter-spacing: .5px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); border-radius: 8px; padding: 13px 16px;
+      font-size: .9rem; font-family: inherit; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red); box-shadow: 0 0 0 3px rgba(230,57,70,0.15);
+    }
+    .form-group select option { background: var(--dark3); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%; background: var(--red); color: var(--white);
+      padding: 15px; border: none; border-radius: 8px; font-size: 1rem;
+      font-weight: 600; cursor: pointer; transition: all .25s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 0 6px 24px rgba(230,57,70,0.35);
+    }
+    .form-submit:hover { background: #c9232f; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(230,57,70,0.45); }
+    .form-submit:active { transform: translateY(0); }
+
+    /* ─── SUCCESS MESSAGE ─── */
+    .success-msg {
+      display: none; text-align: center; padding: 24px;
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 10px; margin-top: 16px; color: #4ade80;
+    }
+
+    /* ─── MAP PLACEHOLDER ─── */
+    .map-section { background: var(--dark2); padding: 0; }
+    .map-container {
+      height: 320px; background: var(--dark3); position: relative;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .map-overlay {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 39px, rgba(230,57,70,0.04) 40px
+      ),
+      repeating-linear-gradient(
+        90deg, transparent, transparent 39px, rgba(230,57,70,0.04) 40px
+      );
+    }
+    .map-pin {
+      position: relative; z-index: 2; text-align: center;
+    }
+    .map-pin-icon {
+      width: 64px; height: 64px; background: var(--red); border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto; box-shadow: 0 8px 30px rgba(230,57,70,0.5);
+      animation: bounce-pin 2s ease-in-out infinite;
+    }
+    .map-pin-icon i { transform: rotate(45deg); color: var(--white); font-size: 1.4rem; }
+    @keyframes bounce-pin {
+      0%,100% { transform: rotate(-45deg) translateY(0); }
+      50% { transform: rotate(-45deg) translateY(-10px); }
+    }
+    .map-pin p { margin-top: 20px; color: #aaa; font-size: .95rem; }
+    .map-pin strong { color: var(--white); display: block; font-size: 1.1rem; margin-top: 6px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080808; padding: 40px 60px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      gap: 20px; flex-wrap: wrap;
+    }
+    footer .logo { font-size: 1.3rem; }
+    footer p { font-size: .82rem; color: var(--gray); }
+    .footer-socials { display: flex; gap: 14px; }
+    .footer-socials a {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: var(--dark2); border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray); font-size: .9rem; text-decoration: none;
+      transition: all .25s;
+    }
+    .footer-socials a:hover { background: var(--red); border-color: var(--red); color: var(--white); transform: translateY(-3px); }
+
+    /* ─── FLOATING WHATSAPP ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      width: 60px; height: 60px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem; color: var(--white); text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      transition: all .3s; animation: wa-bounce 3s ease-in-out infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.15); box-shadow: 0 10px 35px rgba(37,211,102,0.6); }
+    @keyframes wa-bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .whatsapp-float:hover { animation: none; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .why-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .tire-svg { width: 260px; height: 260px; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 30px 24px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a class="logo" href="#"><i class="fa-solid fa-circle-dot" style="color:var(--red)"></i> Gomisteri <span>Fatriu</span></a>
+  <ul class="nav-links">
+    <li><a href="#sherbime">Shërbime</a></li>
+    <li><a href="#pse-ne">Pse Ne?</a></li>
+    <li><a href="#brendet">Brendet</a></li>
+    <li><a href="#kontakt" class="nav-cta">Na Kontaktoni</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="tire-ring"></div>
+    <div class="tire-ring"></div>
+    <div class="tire-ring"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fa-solid fa-star" style="font-size:.7rem"></i>
+      Gomisteri Rrugore Nr.1 në Shqipëri
+    </div>
+    <h1>Goma të <span class="highlight">Forta</span><br />Rrugë të <span class="highlight">Sigurta</span></h1>
+    <p>Shërbim profesional, çmime konkurruese dhe cilësi e garantuar. Besimi juaj është goma jonë.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-primary"><i class="fa-solid fa-phone-volume"></i> Rezervo Tani</a>
+      <a href="#sherbime" class="btn-secondary"><i class="fa-solid fa-circle-play"></i> Shiko Shërbimet</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Vite Eksperiencë</div></div>
+      <div class="stat"><div class="stat-num">8K+</div><div class="stat-label">Klientë të Kënaqur</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Brende Disponibël</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="sherbime">
+  <div class="services-header reveal">
+    <span class="section-label">Çfarë Ofrojmë</span>
+    <h2 class="section-title">Shërbime <span>Profesionale</span></h2>
+    <p class="section-sub">Nga ndërrimi i gomave deri te balancimi dhe kontrolli i plotë — çdo gjë nën një çati.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fa-solid fa-tire"></i></div>
+      <h3>Ndërrimi i Gomave</h3>
+      <p>Montim dhe demontim i shpejtë profesional për çdo lloj veture, me ekipament modern.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+      <h3>Balancimi Dinamik</h3>
+      <p>Balancim preciz me makinë të kalibruar për të eliminuar dridhjet dhe zgjatur jetën e gomave.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fa-solid fa-wrench"></i></div>
+      <h3>Riparim Gomash</h3>
+      <p>Arnime të qëndrueshme dhe riparim i shpejtë i gomave të dëmtuara — i sigurt për rrugë.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <h3>Rotacion Gomash</h3>
+      <p>Rrotullimi periodik i gomave për konsum të njëtrajtshëm dhe ekonomizim të kostos.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fa-solid fa-car-burst"></i></div>
+      <h3>Geometri Rrotash</h3>
+      <p>Rregullim i këndit të rrotave (toe, camber, caster) për drejtim të sigurt dhe preciz.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="fa-solid fa-wind"></i></div>
+      <h3>Mbushja me Azot</h3>
+      <p>Azoti stabilizon presionin e gomës, ul nxehtësinë dhe rrit efikasitetin e karburantit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="pse-ne">
+  <div class="why-wrapper">
+    <div class="why-visual reveal">
+      <svg class="tire-svg" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="190" cy="190" r="185" stroke="#e63946" stroke-width="3" stroke-dasharray="12 8"/>
+        <circle cx="190" cy="190" r="155" stroke="rgba(230,57,70,0.4)" stroke-width="16"/>
+        <circle cx="190" cy="190" r="110" stroke="rgba(230,57,70,0.15)" stroke-width="30"/>
+        <circle cx="190" cy="190" r="65"  fill="rgba(230,57,70,0.08)" stroke="rgba(230,57,70,0.3)" stroke-width="2"/>
+        <line x1="190" y1="35"  x2="190" y2="125" stroke="rgba(230,57,70,0.5)" stroke-width="6" stroke-linecap="round"/>
+        <line x1="190" y1="255" x2="190" y2="345" stroke="rgba(230,57,70,0.5)" stroke-width="6" stroke-linecap="round"/>
+        <line x1="35"  y1="190" x2="125" y2="190" stroke="rgba(230,57,70,0.5)" stroke-width="6" stroke-linecap="round"/>
+        <line x1="255" y1="190" x2="345" y2="190" stroke="rgba(230,57,70,0.5)" stroke-width="6" stroke-linecap="round"/>
+        <line x1="80"  y1="80"  x2="146" y2="146" stroke="rgba(230,57,70,0.3)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="234" y1="234" x2="300" y2="300" stroke="rgba(230,57,70,0.3)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="300" y1="80"  x2="234" y2="146" stroke="rgba(230,57,70,0.3)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="146" y1="234" x2="80"  y2="300" stroke="rgba(230,57,70,0.3)" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div class="tire-center-badge">
+        <span class="big">12</span>
+        <span class="small">VITE<br/>CILËSI</span>
+      </div>
+    </div>
+    <div class="why-text reveal">
+      <span class="section-label">Avantazhet Tona</span>
+      <h2 class="section-title">Pse të Zgjidhni<br /><span>Gomisteri Fatriu?</span></h2>
+      <div class="why-list">
+        <div class="why-item">
+          <i class="fa-solid fa-shield-halved why-icon"></i>
+          <div>
+            <h4>Garanci e Plotë</h4>
+            <p>Çdo shërbim vjen me garanci të shkruar. Nëse nuk je i kënaqur, ktheheni pa kosto.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <i class="fa-solid fa-bolt why-icon"></i>
+          <div>
+            <h4>Shërbim Ultra i Shpejtë</h4>
+            <p>Ndërrimi standard i 4 gomave brenda 30 minutave — koha juaj është e çmuar.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <i class="fa-solid fa-tag why-icon"></i>
+          <div>
+            <h4>Çmimet më të Mira</h4>
+            <p>Transparencë totale në çmim. Nuk ka kosto të fshehura — paguani vetëm çfarë keni rënë dakord.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <i class="fa-solid fa-user-gear why-icon"></i>
+          <div>
+            <h4>Teknicienë të Certifikuar</h4>
+            <p>Ekipi ynë ka certifikime ndërkombëtare dhe mbi 10 vjet eksperiencë praktike.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BRANDS ─── -->
+<section id="brendet">
+  <p class="brands-title reveal">Brendet që Punojmë</p>
+  <div class="brands-row reveal">
+    <div class="brand-pill">Michelin</div>
+    <div class="brand-pill">Bridgestone</div>
+    <div class="brand-pill">Continental</div>
+    <div class="brand-pill">Pirelli</div>
+    <div class="brand-pill">Goodyear</div>
+    <div class="brand-pill">Dunlop</div>
+    <div class="brand-pill">Yokohama</div>
+    <div class="brand-pill">Falken</div>
+    <div class="brand-pill">Hankook</div>
+    <div class="brand-pill">Kumho</div>
+    <div class="brand-pill">BFGoodrich</div>
+    <div class="brand-pill">Toyo</div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="kontakt">
+  <div class="contact-wrapper">
+    <div class="contact-info reveal">
+      <span class="section-label">Na Gjeni Lehtë</span>
+      <h2 class="section-title">Na <span>Kontaktoni</span></h2>
+      <p class="section-sub">Jemi këtu për çdo pyetje apo rezervim. Na shkruani ose telefononi — përgjigjemi menjëherë.</p>
+      <div class="contact-cards">
+        <a href="tel:+355691234567" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+          <div class="contact-card-text">
+            <div class="label">Telefon / WhatsApp</div>
+            <div class="value">+355 69 123 4567</div>
+          </div>
+        </a>
+        <a href="mailto:info@gomimaster.al" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-card-text">
+            <div class="label">Email</div>
+            <div class="value">info@gomimaster.al</div>
+          </div>
+        </a>
+        <a href="#" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-card-text">
+            <div class="label">Adresa</div>
+            <div class="value">Rruga "Elbasanit" Nr. 42, Tiranë</div>
+          </div>
+        </a>
+      </div>
+      <div class="hours-card reveal">
+        <h4><i class="fa-regular fa-clock"></i> &nbsp;Orari i Punës</h4>
+        <div class="hours-row"><span class="day">E Hënë — E Premte</span><span class="time">08:00 – 19:00</span></div>
+        <div class="hours-row"><span class="day">E Shtunë</span><span class="time">08:00 – 17:00</span></div>
+        <div class="hours-row"><span class="day">E Diel</span><span class="time closed">Mbyllur</span></div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form-box reveal">
+      <h3>Dërgo një Mesazh</h3>
+      <p>Plotëso formularin dhe do të kontaktohesh brenda 30 minutave.</p>
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Emri i Plotë</label>
+            <input type="text" placeholder="p.sh. Artan Mema" required />
+          </div>
+          <div class="form-group">
+            <label>Numri i Telefonit</label>
+            <input type="tel" placeholder="+355 6X XXX XXXX" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Shërbimi i Dëshiruar</label>
+          <select required>
+            <option value="" disabled selected>Zgjidhni shërbimin...</option>
+            <option>Ndërrimi i Gomave</option>
+            <option>Balancimi Dinamik</option>
+            <option>Riparim Gome</option>
+            <option>Rotacion Gomash</option>
+            <option>Geometri Rrotash</option>
+            <option>Mbushje me Azot</option>
+            <option>Tjetër</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Modeli i Veturës</label>
+          <input type="text" placeholder="p.sh. VW Golf 7, 2018" />
+        </div>
+        <div class="form-group">
+          <label>Mesazhi (Opsional)</label>
+          <textarea placeholder="Shkruani çdo detaj shtesë këtu..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <i class="fa-solid fa-paper-plane"></i> Dërgo Rezervimin
+        </button>
+      </form>
+      <div class="success-msg" id="successMsg">
+        <i class="fa-solid fa-circle-check" style="font-size:2rem;display:block;margin-bottom:10px"></i>
+        <strong>Mesazhi u dërgua me sukses!</strong><br />
+        Do të kontaktoheni brenda 30 minutave. Faleminderit!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAP ─── -->
+<div class="map-section">
+  <div class="map-container">
+    <div class="map-overlay"></div>
+    <div class="map-pin">
+      <div class="map-pin-icon"><i class="fa-solid fa-location-dot"></i></div>
+      <p>Na gjeni në</p>
+      <strong>Rruga "Elbasanit" Nr. 42, Tiranë</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <a class="logo" href="#"><i class="fa-solid fa-circle-dot" style="color:var(--red)"></i> Gomisteri <span>Fatriu</span></a>
+  <p>© 2024 Gomisteri Fatriu. Të gjitha të drejtat të rezervuara.</p>
+  <div class="footer-socials">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
+</footer>
+
+<!-- ─── FLOATING WHATSAPP ─── -->
+<a href="https://wa.me/355691234567" class="whatsapp-float" target="_blank" title="Na shkruani në WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  // Navbar shrink
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.padding = window.scrollY > 60 ? '12px 60px' : '18px 60px';
+  });
+
+  // Form submit
+  function submitForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const msg  = document.getElementById('successMsg');
+    form.style.display = 'none';
+    msg.style.display  = 'block';
+  }
+</script>
+</body>
+</html>
