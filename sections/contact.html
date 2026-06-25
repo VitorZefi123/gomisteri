@@ -1,0 +1,100 @@
+<section id="kontakt">
+  <div class="contact-wrapper">
+
+    <div class="contact-info reveal">
+      <span class="section-label">Na Gjeni Lehtë</span>
+      <h2 class="section-title">Na <span>Kontaktoni</span></h2>
+      <p class="section-sub">
+        Disponibël 24 orë në ditë. Na telefononi ose dërgoni
+        vendndodhjen tuaj — vijmë menjëherë.
+      </p>
+
+      <div class="contact-cards">
+        <a href="tel:+355691234567" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+          <div class="contact-card-text">
+            <div class="label">Telefon / WhatsApp — 24H</div>
+            <div class="value">+355 69 123 4567</div>
+          </div>
+        </a>
+        <a href="mailto:info@gomisterifattriu.al" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-card-text">
+            <div class="label">Email</div>
+            <div class="value">info@gomisterifattriu.al</div>
+          </div>
+        </a>
+        <a href="#" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-card-text">
+            <div class="label">Adresa (Baza jonë)</div>
+            <div class="value">Rruga "Elbasanit" Nr. 42, Tiranë</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="hours-card reveal">
+        <h4><i class="fa-regular fa-clock"></i> &nbsp;Disponibilitet</h4>
+        <div class="hours-row">
+          <span class="day">E Hënë — E Diel</span>
+          <span class="time always">24 Orë / 7 Ditë</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Emergjencë rrugore</span>
+          <span class="time always">Çdo orë</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Fundjavë &amp; Festa</span>
+          <span class="time always">Po, jemi këtu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-box reveal">
+      <h3>Dërgo Vendndodhjen</h3>
+      <p>Plotëso formularin dhe do të kontaktohesh brenda <strong style="color:#fff">5 minutave</strong>.</p>
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Emri i Plotë</label>
+            <input type="text" placeholder="p.sh. Artan Mema" required />
+          </div>
+          <div class="form-group">
+            <label>Numri i Telefonit</label>
+            <input type="tel" placeholder="+355 6X XXX XXXX" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Shërbimi i Dëshiruar</label>
+          <select required>
+            <option value="" disabled selected>Zgjidhni shërbimin...</option>
+            <option>Emergjencë — Vijni tek unë (24H)</option>
+            <option>Ndërrimi i Gomave</option>
+            <option>Balancimi Dinamik</option>
+            <option>Riparim Gome</option>
+            <option>Geometri Rrotash</option>
+            <option>Mbushje me Azot</option>
+            <option>Tjetër</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vendndodhja / Modeli i Veturës</label>
+          <input type="text" placeholder="p.sh. Rruga Dibres, VW Golf 7" />
+        </div>
+        <div class="form-group">
+          <label>Mesazhi (Opsional)</label>
+          <textarea placeholder="Përshkruani problemin ose çdo detaj shtesë..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <i class="fa-solid fa-paper-plane"></i> Dërgo — Vijmë Tek Ju
+        </button>
+      </form>
+      <div class="success-msg" id="successMsg">
+        <i class="fa-solid fa-circle-check" style="font-size:2rem;display:block;margin-bottom:10px"></i>
+        <strong>Mesazhi u dërgua!</strong><br />
+        Do të kontaktoheni brenda 5 minutave. Jemi rrugës!
+      </div>
+    </div>
+
+  </div>
+</section>
