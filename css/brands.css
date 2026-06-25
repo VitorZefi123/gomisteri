@@ -1,0 +1,32 @@
+#brendet { background: var(--dark2); text-align: center; }
+
+.brands-title {
+  font-size: 1rem;
+  color: var(--gray);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.brands-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand-pill {
+  padding: 14px 28px;
+  border-radius: 50px;
+  background: var(--dark3);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: .9rem;
+  font-weight: 600;
+  color: #ccc;
+  letter-spacing: 1px;
+  transition: all .25s;
+}
+.brand-pill:hover { border-color: var(--red); color: var(--white); transform: scale(1.05); }

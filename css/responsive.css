@@ -1,0 +1,18 @@
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+
+  section { padding: 70px 24px; }
+
+  .mobile-banner-inner { grid-template-columns: 1fr; }
+  .mobile-banner-visual { display: none; }
+  .mobile-banner-text { padding: 50px 24px; }
+
+  .why-wrapper { grid-template-columns: 1fr; gap: 40px; }
+  .tire-svg { width: 260px; height: 260px; }
+
+  .contact-wrapper { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+
+  footer { padding: 30px 24px; flex-direction: column; text-align: center; }
+}

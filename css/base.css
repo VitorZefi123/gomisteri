@@ -1,0 +1,105 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red:    #e63946;
+  --dark:   #0d0d0d;
+  --dark2:  #1a1a1a;
+  --dark3:  #222;
+  --gray:   #888;
+  --light:  #f1f1f1;
+  --white:  #fff;
+  --accent: #ff6b35;
+  --green:  #25d366;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+section { padding: 100px 60px; }
+
+.section-label {
+  display: inline-block;
+  font-size: .75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.section-title span { color: var(--red); }
+
+.section-sub {
+  color: var(--gray);
+  margin-top: 14px;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: var(--white);
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+  box-shadow: 0 8px 30px rgba(230,57,70,0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-primary:hover {
+  background: #c9232f;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(230,57,70,0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all .25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-secondary:hover { border-color: var(--red); color: var(--red); transform: translateY(-3px); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
