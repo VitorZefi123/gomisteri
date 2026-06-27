@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vitorzefi123.github.io/gomisteri/sitemap.xml
