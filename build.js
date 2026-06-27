@@ -6,23 +6,41 @@ const sections = [
   'why-us', 'brands', 'contact', 'map', 'footer'
 ];
 
-const shell = fs.readFileSync('index.html', 'utf8');
-
-let output = shell.replace(
-  /  <div data-section="[^"]+"><\/div>\n/g, ''
-);
-
-// Build the injected body content
-const body = sections.map(name => {
+const sectionHTML = sections.map(name => {
   const file = path.join('sections', `${name}.html`);
-  return fs.readFileSync(file, 'utf8').trim();
-}).join('\n\n');
+  const content = fs.readFileSync(file, 'utf8').trim();
+  return content ? content : '';
+}).filter(Boolean).join('\n\n');
 
-// Replace placeholder comment area + scripts with full content + scripts
-output = output.replace(
-  /  <!-- Sections are loaded dynamically by js\/loader\.js -->\n([\s\S]*?)  <!-- main\.js first[\s\S]*?-->\n  <script src="js\/main\.js"><\/script>\n  <script src="js\/loader\.js"><\/script>/,
-  body + '\n\n  <script src="js/main-static.js"></script>'
-);
+const output = `<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gomisteri Rrugore e Shpejtë – Shërbim 24H</title>
 
-fs.writeFileSync('dist.html', output, 'utf8');
-console.log('✓ Built: dist.html — open directly in browser!');
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+  <link rel="stylesheet" href="css/services.css" />
+  <link rel="stylesheet" href="css/why-us.css" />
+  <link rel="stylesheet" href="css/brands.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+${sectionHTML}
+
+<script src="js/main-static.js"></script>
+</body>
+</html>
+`;
+
+fs.writeFileSync('index.html', output, 'utf8');
+console.log('✓ Built index.html nga ' + sections.length + ' seksione');
