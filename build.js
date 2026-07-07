@@ -25,13 +25,13 @@ const output = `<!DOCTYPE html>
   <meta name="author" content="Gomisteri Rrugore e Shpejtë" />
   <meta name="robots" content="index, follow" />
   <meta name="google-site-verification" content="szbjmww4fMriqbn0AXP_KKMAMWr-uJKrE9AFaINVFw4" />
-  <link rel="canonical" href="https://vitorzefi123.github.io/gomisteri/" />
+  <link rel="canonical" href="https://www.gomisterirrugoreshpejte.com/" />
 
   <!-- ═══ OPEN GRAPH (Facebook / WhatsApp preview) ═══ -->
   <meta property="og:type"        content="business.business" />
   <meta property="og:title"       content="Gomisteri Rrugore e Shpejtë – Shërbim 24H" />
   <meta property="og:description" content="Vijmë aty ku je ti! Ndërrimi gomave, riparim dhe balancim 24 orë. Tiranë – +355 68 489 3745" />
-  <meta property="og:url"         content="https://vitorzefi123.github.io/gomisteri/" />
+  <meta property="og:url"         content="https://www.gomisterirrugoreshpejte.com/" />
   <meta property="og:locale"      content="sq_AL" />
 
   <!-- ═══ SCHEMA.ORG – Local Business (Google e lexon këtë) ═══ -->
@@ -41,7 +41,7 @@ const output = `<!DOCTYPE html>
     "@type": "AutoRepair",
     "name": "Gomisteri Rrugore e Shpejtë",
     "description": "Gomisteri rrugore me shërbim 24 orë. Vijmë aty ku je ti për ndërrimin, riparimin dhe balancimin e gomave.",
-    "url": "https://vitorzefi123.github.io/gomisteri/",
+    "url": "https://www.gomisterirrugoreshpejte.com/",
     "telephone": "+355684893745",
     "address": {
       "@type": "PostalAddress",
