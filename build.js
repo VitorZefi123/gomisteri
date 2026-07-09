@@ -30,6 +30,7 @@ const output = `<!DOCTYPE html>
 
   <!-- ═══ OPEN GRAPH (Facebook / WhatsApp preview) ═══ -->
   <meta property="og:type"        content="business.business" />
+  <meta property="og:site_name"   content="Gomisteri Rrugore e Shpejtë" />
   <meta property="og:title"       content="Gomisteri Rrugore e Shpejtë – Shërbim 24H" />
   <meta property="og:description" content="Vijmë aty ku je ti! Ndërrimi gomave, riparim dhe balancim 24 orë. Tiranë – +355 68 489 3745" />
   <meta property="og:url"         content="https://www.gomisterirrugoreshpejte.com/" />
